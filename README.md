@@ -1,2 +1,2 @@
 # service.curl
-Gamedek plugin
+Gamedek service plugin to add centralized curl functionality.
