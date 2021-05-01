@@ -1,0 +1,2 @@
+# service.curl
+Gamedek plugin
