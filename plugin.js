@@ -3,6 +3,7 @@ const md5 = require('md5')
 const mkdirp = require('mkdirp')
 const path = require('path')
 const fetch = require('node-fetch');
+const https = require('https');
 
 class myplugin extends global.Plugin {
     constructor(root, manifest) {
@@ -46,7 +47,12 @@ class myplugin extends global.Plugin {
         }
         if (!fs.existsSync(fname)) {
             try {
-                const res = await fetch(url)
+                const httpsAgent = new https.Agent({
+                    rejectUnauthorized: false,
+                });
+                const res = await fetch(url, {
+                    agent: httpsAgent
+                })
                 if (!res.ok) {
                     throw new Error(res.status + ': ' + res.statusText)
                 }
