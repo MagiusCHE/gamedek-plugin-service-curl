@@ -60,8 +60,7 @@ class myplugin extends global.Plugin {
                 fs.writeFileSync(fname, buff)
                 jdown = true
             } catch (err) {
-                this.logError(`Error while downloading file from "${url}"`, err)
-                return
+                throw new Error(`Error while downloading file from "${url}": ` + err)
             }
         }
 
